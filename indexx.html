@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trésors du Dadès | Terroir de Kelaat M'Gouna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ocre: #A0522D; /* Terre de Sienne */
+            --ocre-clair: #D2B48C;
+            --vert-olive: #556B2F;
+            --whatsapp-green: #25D366;
+            --noir: #2C2C2C;
+            --blanc: #FDFBF8;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--blanc);
+            color: var(--noir);
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 { font-family: 'Lora', serif; color: var(--ocre); }
+
+        header {
+            background: white;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+        }
+
+        .logo { font-size: 24px; font-weight: bold; color: var(--ocre); text-decoration: none; }
+
+        nav a { margin-left: 20px; text-decoration: none; color: var(--noir); font-weight: 500; }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('dades.jpg') no-repeat center/cover;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 { color: white; font-size: 3.5rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.5rem; font-style: italic; }
+
+        .btn-primary {
+            background: var(--ocre);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 25px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        /* SECTIONS */
+        section { padding: 60px 10%; }
+        .center { text-align: center; }
+
+        /* STORYTELLING */
+        .story-section { background: #f9f4f0; }
+        .story-content { max-width: 800px; margin: 0 auto; font-family: 'Lora', serif; font-size: 1.1rem; text-align: center; line-height: 1.8; }
+
+        /* GRID PRODUITS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Pour que l'image ne dépasse pas des bords arrondis */
+            border-bottom: 4px solid var(--ocre-clair);
+            transition: 0.3s;
+        }
+        
+        .card:hover { transform: translateY(-5px); }
+
+        /* STYLE DES IMAGES DANS LES CARTES */
+        .product-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .price { color: var(--vert-olive); font-weight: bold; font-size: 1.1rem; margin: 10px 0; }
+
+        /* BOUTON COMMANDER WHATSAPP */
+        .btn-wa-order {
+            background-color: var(--whatsapp-green);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .btn-wa-order:hover { opacity: 0.9; }
+        .btn-wa-order img { width: 20px; filter: brightness(0) invert(1); }
+
+        /* PACKS */
+        .packs-section { background: var(--ocre); color: white; }
+        .packs-section h2 { color: white; }
+        .pack-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+        .pack-card h3 { color: white; }
+        .pack-card p { color: #f0f0f0; }
+
+        /* WHATSAPP FLOTTANT */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: 0.3s;
+        }
+        .wa-float img { width: 35px; }
+
+        footer { background: var(--noir); color: white; padding: 50px 10%; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+    </style>
+</head>
+<body>
+
+<a href="https://wa.me/+212648118483?text=Bonjour%20Trésors%20du%20Dadès,%20j'aimerais%20en%20savoir%20plus." class="wa-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<header>
+    <a href="#" class="logo">Trésors du Dadès</a>
+    <nav>
+        <a href="#produits">Boutique</a>
+        <a href="#packs">Packs</a>
+        <a href="#histoire">Notre Histoire</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <h1>Trésors du Dadès</h1>
+    <p>Naturellement nôtre.</p>
+    <a href="#produits" class="btn-primary">Voir la Collection</a>
+</div>
+
+<section id="histoire" class="story-section">
+    <div class="center">
+        <h2>L'Âme de la Vallée du Dadès</h2>
+        <div class="story-content">
+            <p>"Au-delà des parfums de la Rose, il existe une vallée où le temps semble s'être arrêté pour laisser la nature s'exprimer. Au Dadès, l'eau pure descendue des sommets de l'Atlas nourrit une terre généreuse."</p>
+        </div>
+    </div>
+</section>
+
+<section id="produits">
+    <h2 class="center">Nos Produits Purs & Bio</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="zzayt.jpg" alt="Huile d'olive" class="product-img">
+            <div class="card-body">
+                <h3>L'Or Vert du Dadès</h3>
+                <p>Huile d’Olive Extra-Vierge pressée à froid. Arôme intense et pureté garantie.</p>
+                <p class="price">100% Artisanal</p>
+                <p class="price">60 DH</p>
+                <a href="https://wa.me/212648118483?text=Bonjour,%20je%20souhaite%20commander%20l'Huile%20d'Olive." class="btn-wa-order" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> Commander via WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="lloz.jpg" alt="Amandes" class="product-img">
+            <div class="card-body">
+                <h3>Amandes Douces</h3>
+                <p>Amandes de Kelaat M'Gouna, séchées à l'air pur. Croquantes et sucrées.</p>
+                <p class="price">Riche en Magnésium</p>
+                <p class="price">150 DH</p>
+                <a href="https://wa.me/212648118483?text=Bonjour,%20je%20souhaite%20commander%20vos%20Amandes%20Douces." class="btn-wa-order" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> Commander via WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="tazart.jpg" alt="Figues" class="product-img">
+            <div class="card-body">
+                <h3>Perles de Soleil (Figues)</h3>
+                <p>Figues séchées naturellement. Sans conservateurs ni sucres ajoutés.</p>
+                <p class="price">Énergie Naturelle</p>
+                <p class="price">100 DH</p>
+                <a href="https://wa.me/212648118483?text=Bonjour,%20je%20souhaite%20commander%20vos%20Figues%20Séchées." class="btn-wa-order" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> Commander via WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="ddoj.jpg" alt="Figues" class="product-img">
+            <div class="card-body">
+                <h3>Perles de Soleil (Noix)</h3>
+                <p>Noix séchées naturellement. Sans conservateurs ni sucres ajoutés.</p>
+                <p class="price">Énergie Naturelle</p>
+                <p class="price">200 DH</p>
+                <a href="https://wa.me/212648118483?text=Bonjour,%20je%20souhaite%20commander%20vos%20Figues%20Séchées." class="btn-wa-order" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> Commander via WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="packs" class="packs-section">
+    <h2 class="center">Packs Vitalité & Cadeaux</h2>
+    <div class="grid">
+        <div class="card pack-card">
+            <img src="ftour.png" alt="Pack Ftour" class="product-img">
+            <div class="card-body">
+                <h3>Pack Ftour Traditionnel</h3>
+                <p>Le trio parfait : Huile d'olive (1L), Amandes (250g) et Figues (500g).</p>
+                <p class="price" style="color: white;">Offre Spéciale</p>
+                <a href="https://wa.me/212648118483?text=Bonjour,%20je%20souhaite%20commander%20le%20Pack%20Ftour." class="btn-wa-order" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> Commander ce Pack
+                </a>
+            </div>
+        </div>
+        <div class="card pack-card">
+            <img src="eng.png" alt="Pack Energie" class="product-img">
+            <div class="card-body">
+                <h3>Pack Énergie Montagnard</h3>
+                <p>Noix (250g), Amandes (250g) et Pâte de figue (500g).</p>
+                <p class="price" style="color: white;">Vitalité Atlas</p>
+                <a href="https://wa.me/212648118483?text=Bonjour,%20je%20souhaite%20commander%20le%20Pack%20Énergie." class="btn-wa-order" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> Commander ce Pack
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h3>Trésors du Dadès</h3>
+            <p>Directement de Dadès à votre table.</p>
+        </div>
+        <div>
+            <h3>Contact</h3>
+            <p>📍 Dadès,Tinghir, Maroc</p>
+            <p>📞 WhatsApp : +212 6 48 11 84 83</p>
+        </div>
+    </div>
+    <div class="center" style="margin-top: 40px; opacity: 0.6;">
+        &copy; 2026 Trésors du Dadès.
+    </div>
+</footer>
+
+</body>
+</html>
